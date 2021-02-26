@@ -8,6 +8,7 @@ npm install
 Test
 
 ```
-jest
+npm test
+
 ```
 
