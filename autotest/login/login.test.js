@@ -7,7 +7,7 @@ describe("Login Youtube Account", () => {
     //Before unit test
     beforeAll(async () => {
         browser = await puppeteer.launch({
-            headless: true
+            headless: false
         });
         page = await browser.newPage();
         await page.goto("https://www.youtube.com/");
