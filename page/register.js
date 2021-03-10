@@ -85,6 +85,77 @@ class RegisterPage {
     }
 
     //Type string in the element
+    async static typeName(page, nameValue) {
+        let element = await RegisterPage.nameElement(page);
+        expect(element).not.toBeNull();
+        await page.eval(element[0], input => input.value = nameValue);
 
+    }
 
+    async static typeEmail(page, emailValue) {
+        let element = await RegisterPage.EmailElement(page);
+        expect(element).not.toBeNull();
+        await page.eval(element[0], input => input.value = emailValue);
+
+    }
+
+    async static typePassword(page, passwordValue) {
+        let element = await RegisterPage.passwordElement(page);
+        expect(element).not.toBeNull();
+        await page.eval(element[0], input => input.value = passwordValue);
+
+    }
+
+    async static typeConfirmPassword(page, confirmPasswordValue) {
+        let element = await RegisterPage.confirmPasswordElement(page);
+        expect(element).not.toBeNull();
+        await page.eval(element[0], input => input.value = confirmPasswordValue);
+
+    }
+
+    async static typePhone(page, phoneValue) {
+        let element = await RegisterPage.phoneElement(page);
+        expect(element).not.toBeNull();
+        await page.eval(element[0], input => input.value = phoneValue);
+
+    }
+
+    async static typeCity(page, cityValue) {
+        let element = await RegisterPage.cityElement(page);
+        expect(element).not.toBeNull();
+        await page.eval(element[0], input => input.value = cityValue);
+
+    }
+
+    async static typeDistrict(page, districtValue) {
+        let element = await RegisterPage.districtElement(page);
+        expect(element).not.toBeNull();
+        await page.eval(element[0], input => input.value = districtValue);
+
+    }
+
+    async static typeAddress(page, addressValue) {
+        let element = await RegisterPage.addressElement(page);
+        expect(element).not.toBeNull();
+        await page.eval(element[0], input => input.value = addressValue);
+    }
+
+    //Event click
+
+    async static checkAgreeElement(page) {
+        let element = await RegisterPage.agreeCheckboxElement(page);
+        expect(element).not.toBeNull();
+        await page.eval(element[0], check => check.checked = true);
+    }
+
+    async static clickRegisterButton(page) {
+        let registerButton = await RegisterPage.registerButtonElement(page);
+        expect(registerButton).not.toBeNull();
+        await registerButton.click();
+    }
+    
+}
+
+module.exports = {
+    RegisterPage
 }
