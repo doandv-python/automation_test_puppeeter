@@ -1,5 +1,5 @@
 class RegisterXpath {
-    static REGISTER_URL="http://localhost:51264/WebBanXe/DangKy.aspx";
+    static REGISTER_URL = "http://localhost:51264/WebBanXe/DangKy.aspx";
     static NAME_XPATH = "";
     static EMAIL_XPATH = "";
     static PASSWORD_XPATH = "";
@@ -27,7 +27,12 @@ class HomeXpath {
     static SEARCH_BUTTON_XPATH = "//a[@id='ContentPlaceHolder1_LinkButton1']";
 }
 
+class Config {
+    static TIME_OUT = 3000000;
+}
+
 module.exports = {
     RegisterXpath,
-    HomeXpath
+    HomeXpath,
+    Config
 };

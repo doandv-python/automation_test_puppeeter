@@ -1,19 +1,21 @@
-let constants = require("utils/constants");
+let constants = require("../utils/constants");
 let homeXpath = constants.HomeXpath;
 
 class HomePage {
 
     //Get element of home page
+     constructor() {
+    }
 
-    async static homeLinkElement(page) {
+    static async homeLinkElement (page) {
         let homeButton = await page.$x(homeXpath.HOME_BUTTON_XPATH);
-        if (homeButton) {
+        if (homeButton == null) {
             return null;
         }
         return homeButton[0];
     }
 
-    async static manufacturerLinkElement(page) {
+    static async manufacturerLinkElement (page) {
         let manufacturer = await page.$x(homeXpath.MANUFACTURER_XPATH);
         if (manufacturer) {
             return null;
@@ -21,7 +23,7 @@ class HomePage {
         return manufacturer[0];
     }
 
-    async static priceListLinkElement(page) {
+    static async priceListLinkElement (page) {
         let priceListLink = await page.$x(homeXpath.PRICE_LIST_XPATH);
         if (priceListLink) {
             return null;
@@ -29,7 +31,7 @@ class HomePage {
         return priceListLink[0];
     }
 
-    async static newsLinkElement(page) {
+    static async newsLinkElement (page) {
         let newLink = await page.$x(homeXpath.NEWS_XPATH);
         if (newLink) {
             return null;
@@ -37,7 +39,7 @@ class HomePage {
         return newLink[0];
     }
 
-    async static salonLinkElement(page) {
+    static async salonLinkElement (page) {
         let salonLink = await page.$x(homeXpath.SALON_XPATH);
         if (salonLink) {
             return null;
@@ -45,7 +47,7 @@ class HomePage {
         return salonLink[0];
     }
 
-    async static vehicleRegistrationElement(page) {
+    static async vehicleRegistrationElement (page) {
         let vehicleRegistrationLink = await page.$x(homeXpath.VEHICLE_REGISTRATION_XPATH);
         if (vehicleRegistrationLink) {
             return null;
@@ -53,7 +55,7 @@ class HomePage {
         return vehicleRegistrationLink[0];
     }
 
-    async static accountLinkElement(page) {
+    static async accountLinkElement (page) {
         let accountLink = await page.$x(homeXpath.ACCOUNT_XPATH);
         if (accountLink) {
             return null;
@@ -61,7 +63,7 @@ class HomePage {
         return accountLink[0];
     }
 
-    async static loginLinkElement(page) {
+    static async loginLinkElement (page) {
         let loginLink = await page.$x(homeXpath.LOGIN_XPATH);
         if (loginLink) {
             return null;
@@ -69,7 +71,7 @@ class HomePage {
         return loginLink[0];
     }
 
-    async static registerLinkElement(page) {
+    static async registerLinkElement (page) {
         let registerLink = await page.$x(homeXpath.REGISTER_XPATH);
         if (registerLink) {
             return null;
@@ -77,7 +79,7 @@ class HomePage {
         return registerLink[0];
     }
 
-    async static searchSelectElement(page) {
+    static async searchSelectElement (page) {
         let searchSelect = await page.$x(homeXpath.SEARCH_SELECT_XPATH);
         if (searchSelect) {
             return null;
@@ -85,7 +87,7 @@ class HomePage {
         return searchSelect[0];
     }
 
-    async static searchButtonElement(page) {
+    static async searchButtonElement (page) {
         let searchButton = await page.$x(homeXpath.SEARCH_BUTTON_XPATH);
         if (searchButton) {
             return null;
@@ -94,69 +96,80 @@ class HomePage {
     }
 
     //Click
-    async static clickHomeLink(page) {
+    static async clickHomeLink (page) {
         let homeLink = HomePage.homeLinkElement(page);
         expect(homeLink).not.toBeNull();
         await homeLink.click();
         await page.waitForNavigation();
     }
 
-    async static clickManufacturerLink(page) {
+    static async clickManufacturerLink (page) {
         let manufacturer = await HomePage.manufacturerLinkElement(page);
         expect(manufacturer).not.toBeNull();
         await manufacturer.click();
         await page.waitForNavigation();
     }
 
-    async static clickPriceListLink(page) {
+    static async clickPriceListLink (page) {
         let priceListLink = await HomePage.priceListLinkElement(page);
         expect(priceListLink).not.toBeNull();
         await priceListLink.click();
         await page.waitForNavigation();
     }
 
-    async static clickNewsLink(page) {
+    static async clickNewsLink (page) {
         let newsLink = await HomePage.newsLinkElement(page);
         expect(newsLink).not.toBeNull();
         await newsLink.click();
         await page.waitForNavigation();
     }
 
-    async static clickSalonLink(page) {
+    static async clickSalonLink (page) {
         let salonLink = await HomePage.salonLinkElement(page);
         expect(salonLink).not.toBeNull();
         await salonLink.click();
         await page.waitForNavigation();
     }
 
-    async static clickVehicleRegisterLink(page) {
+    static async clickVehicleRegisterLink (page) {
         let vehicleRegisterLink = await HomePage.vehicleRegistrationElement(page);
         expect(vehicleRegisterLink).not.toBeNull();
         await vehicleRegisterLink.click();
         await page.waitForNavigation();
     }
 
-    async static clickAccountLink(page) {
+    static async clickAccountLink (page) {
         let accountLink = await HomePage.accountLinkElement(page);
         expect(accountLink).not.toBeNull();
         await accountLink.click();
         await page.waitForNavigation();
     }
 
-    async static clickLoginButton(page) {
+    static async clickLoginButton (page) {
         let loginButton = await HomePage.loginLinkElement(page);
         expect(loginButton).not.toBeNull();
         await loginButton.click();
         await page.waitForNavigation();
     }
 
-    async static clickRegisterButton(page) {
+    static async clickRegisterButton (page) {
         let registerButton = await HomePage.registerLinkElement(page);
         expect(registerButton).not.toBeNull();
         await registerButton.click();
         await page.waitForNavigation();
     }
 
+    static async clickSearchButton (page) {
+        let searchButton = await HomePage.searchButtonElement();
+        expect(searchButton).not.toBeNull();
+        await searchButton.click();
+        await page.waitForNavigation();
+    }
+
+    static async gotoHomePage (page) {
+        expect(page).not.toBeNull();
+        await page.goto(homeXpath.HOME_URL);
+    }
 }
 
 module.exports = {
