@@ -1,15 +1,15 @@
 class RegisterXpath {
     static REGISTER_URL = "http://localhost:51264/WebBanXe/DangKy.aspx";
-    static NAME_XPATH = "";
-    static EMAIL_XPATH = "";
-    static PASSWORD_XPATH = "";
-    static CONFIRM_PASS_XPATH = "";
-    static PHONE_XPATH = "";
-    static CITY_XPATH = "";
-    static DISTRICT_XPATH = "";
-    static ADDRESS_XPATH = "";
-    static AGREE_CHECK_BOX_XPATH = "";
-    static REGISTER_BUTTON_XPATH = "";
+    static NAME_XPATH = "//input[@id='ContentPlaceHolder1_txt_hoten']";
+    static EMAIL_XPATH = "//input[@id='ContentPlaceHolder1_txt_email']";
+    static PASSWORD_XPATH = "//input[@id='ContentPlaceHolder1_txt_password']";
+    static CONFIRM_PASS_XPATH = "//input[@id='ContentPlaceHolder1_txt_confirm']";
+    static PHONE_XPATH = "//input[@id='ContentPlaceHolder1_txt_sdt']";
+    static CITY_XPATH = "//input[@id='ContentPlaceHolder1_txt_tinh_tp']";
+    static DISTRICT_XPATH = "//input[@id='ContentPlaceHolder1_txt_quan_huyen']";
+    static ADDRESS_XPATH = "//input[@id='ContentPlaceHolder1_txt_diachi']";
+    static AGREE_CHECK_BOX_XPATH = "//input[@id='agree']";
+    static REGISTER_BUTTON_XPATH = "//input[@id='ContentPlaceHolder1_btn_dangky']";
 }
 
 class HomeXpath {
