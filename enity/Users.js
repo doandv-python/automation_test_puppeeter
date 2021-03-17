@@ -24,7 +24,16 @@ class User {
         let address = User.randomAddress(20);
         return new User(name, email, password, phone, city, district, address);
     }
-
+    static  randomSuccessUser(){
+        let name = User.randomName(15);
+        let email = User.randomEmail(15);
+        let password = User.randomPassword(15);
+        let phone = User.randomPhone(10);
+        let city = User.randomCity(15);
+        let district = User.randomDistrict(15);
+        let address = User.randomAddress(20);
+        return new User(name, email, password, phone, city, district, address);
+    }
     static randomEmptyUser() {
         return new User(EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING);
     }
