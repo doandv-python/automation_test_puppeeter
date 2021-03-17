@@ -32,8 +32,16 @@ class Config {
     static TIME_OUT = 3000000;
 }
 
+class Utils {
+
+    static get_random_value(min, max) {
+        Math.floor(Math.random() * Math.floor(max - min)) + min;
+    }
+}
+
 module.exports = {
     RegisterXpath,
     HomeXpath,
-    Config
+    Config,
+    Utils
 };
