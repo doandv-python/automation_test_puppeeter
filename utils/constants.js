@@ -10,6 +10,7 @@ class RegisterXpath {
     static ADDRESS_XPATH = "//input[@id='ContentPlaceHolder1_txt_diachi']";
     static AGREE_CHECK_BOX_XPATH = "//input[@id='agree']";
     static REGISTER_BUTTON_XPATH = "//input[@id='ContentPlaceHolder1_btn_dangky']";
+    static DIALOG_RESULT_XPATH = "//span[@id='ContentPlaceHolder1_resultDialog']";
 }
 
 class HomeXpath {
@@ -31,8 +32,16 @@ class Config {
     static TIME_OUT = 3000000;
 }
 
+class Utils {
+
+    static get_random_value(min, max) {
+        Math.floor(Math.random() * Math.floor(max - min)) + min;
+    }
+}
+
 module.exports = {
     RegisterXpath,
     HomeXpath,
-    Config
+    Config,
+    Utils
 };
