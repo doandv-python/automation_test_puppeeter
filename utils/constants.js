@@ -35,7 +35,7 @@ class Config {
 class Utils {
 
     static get_random_value(min, max) {
-        Math.floor(Math.random() * Math.floor(max - min)) + min;
+        return Math.floor(Math.random() * Math.floor(max - min)) + min;
     }
 }
 

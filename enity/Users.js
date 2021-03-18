@@ -1,9 +1,9 @@
 let randomstring = require("randomstring");
 const EMPTY_STRING = "";
+const SPECIAL_CHARS = ['!', '@', '#', '%', '$', '*', '^', '\\', '?'];
+const NO_VALID_PHONE = '123h@123456';
 
 class User {
-
-
     constructor(name, email, password, phone, city, district, address) {
         this.name = name;
         this.email = email;
@@ -24,7 +24,8 @@ class User {
         let address = User.randomAddress(20);
         return new User(name, email, password, phone, city, district, address);
     }
-    static  randomSuccessUser(){
+
+    static randomSuccessUser() {
         let name = User.randomName(15);
         let email = User.randomEmail(15);
         let password = User.randomPassword(15);
@@ -34,6 +35,7 @@ class User {
         let address = User.randomAddress(20);
         return new User(name, email, password, phone, city, district, address);
     }
+
     static randomEmptyUser() {
         return new User(EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING);
     }
@@ -42,12 +44,33 @@ class User {
         return randomstring.generate({length: length, charset: 'alphabetic'});
     }
 
+    static randomNameWithSpecial(length) {
+        let specialLength = Math.floor(Math.random() * SPECIAL_CHARS.length);
+        return randomstring.generate({length: length - 1, charset: 'alphabetic'}) + SPECIAL_CHARS[specialLength];
+    }
+
     static randomEmail(length) {
         return randomstring.generate({length: length, charset: 'alphabetic'}) + "@gmail.com";
     }
 
+    static randomNoValidEmail(length) {
+        return randomstring.generate({length: length, charset: 'alphabetic'});
+    }
+
+    static randomNoValidEmailOnlySuffix() {
+        return "@gmail.com";
+    }
+
     static randomPassword(length) {
         return randomstring.generate({length: length});
+    }
+
+    static randomPasswordVietnamese(length) {
+        return randomstring.generate({length: length - 1}) + 'á';
+    }
+
+    static randomPasswordSpace(length) {
+        return randomstring.generate({length: length - 1}) + ' ';
     }
 
     static randomPhone(length) {
@@ -55,6 +78,10 @@ class User {
             length: length,
             charset: 'numeric'
         });
+    }
+
+    static randomNoValidPhone() {
+        return NO_VALID_PHONE;
     }
 
     static randomCity(length) {
@@ -69,6 +96,7 @@ class User {
         return randomstring.generate({length: length, charset: 'alphabetic'});
     }
 }
-module.exports={
+
+module.exports = {
     User
 }

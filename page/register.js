@@ -95,7 +95,7 @@ class RegisterPage {
 
     //Type string in the element
     static async typeName(page, nameValue) {
-        await page.waitForXPath(registerXpath.EMAIL_XPATH);
+        await page.waitForXPath(registerXpath.NAME_XPATH);
         let element = await RegisterPage.nameElement(page);
         expect(element).not.toBeNull();
         await element.type(nameValue);
@@ -119,6 +119,14 @@ class RegisterPage {
     static async typeConfirmPassword(page, confirmPasswordValue) {
         let element = await RegisterPage.confirmPasswordElement(page);
         expect(element).not.toBeNull();
+        await element.type(confirmPasswordValue);
+
+    }
+
+    static async setConfirmPasswordValue(page, confirmPasswordValue) {
+        let element = await RegisterPage.confirmPasswordElement(page);
+        expect(element).not.toBeNull();
+        await page.evaluate(input => input.value = confirmPasswordValue, element);
         await element.type(confirmPasswordValue);
 
     }
@@ -181,6 +189,29 @@ class RegisterPage {
         await RegisterPage.typeDistrict(page, userData.district);
         await RegisterPage.typeAddress(page, userData.address);
     }
+
+    static async registerUserNoConfirm(page, userData) {
+        await RegisterPage.typeName(page, userData.name);
+        await RegisterPage.typeEmail(page, userData.email);
+        await RegisterPage.typePassword(page, userData.password);
+        //await RegisterPage.typeConfirmPassword(page, userData.password);
+        await RegisterPage.typePhone(page, userData.phone);
+        await RegisterPage.typeCity(page, userData.city);
+        await RegisterPage.typeDistrict(page, userData.district);
+        await RegisterPage.typeAddress(page, userData.address);
+    }
+
+    static async registerUserConfirmNotSame(page, userData) {
+        await RegisterPage.typeName(page, userData.name);
+        await RegisterPage.typeEmail(page, userData.email);
+        await RegisterPage.typePassword(page, userData.password);
+        await RegisterPage.typeConfirmPassword(page, userData.name);
+        await RegisterPage.typePhone(page, userData.phone);
+        await RegisterPage.typeCity(page, userData.city);
+        await RegisterPage.typeDistrict(page, userData.district);
+        await RegisterPage.typeAddress(page, userData.address);
+    }
+
 }
 
 module.exports = {
